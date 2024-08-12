@@ -63,55 +63,55 @@ class ProjectConstants:
 
 @dataclasses.dataclass(frozen=True)
 class TrainingJobConstants:
-    """Defines constants used by tests that create training jobs."""
+  """Defines constants used by tests that create training jobs."""
 
-    _TEST_OUTPUT_PYTHON_PACKAGE_PATH = "gs://test-staging-bucket/trainer.tar.gz"
-    _TEST_MODULE_NAME = (
+  _TEST_OUTPUT_PYTHON_PACKAGE_PATH = "gs://test-staging-bucket/trainer.tar.gz"
+  _TEST_MODULE_NAME = (
         f"{source_utils._TrainingScriptPythonPackager._ROOT_MODULE}.task"
     )
-    _TEST_LOCAL_SCRIPT_FILE_NAME = "____test____script.py"
-    _TEST_REQUIREMENTS = ["pandas", "numpy", "tensorflow"]
-    _TEST_ENVIRONMENT_VARIABLES = {
+  _TEST_LOCAL_SCRIPT_FILE_NAME = "____test____script.py"
+  _TEST_REQUIREMENTS = ["pandas", "numpy", "tensorflow"]
+  _TEST_ENVIRONMENT_VARIABLES = {
         "MY_PATH": "/path/to/my_path",
     }
-    _TEST_REPLICA_COUNT = 1
-    _TEST_MACHINE_TYPE = "n1-standard-4"
-    _TEST_MACHINE_TYPE_TPU = "cloud-tpu"
-    _TEST_MACHINE_TYPE_TPU_V5E = "ct5lp-hightpu-4t"
-    _TEST_ACCELERATOR_TPU_TYPE = "TPU_V3"
-    _TEST_ACCELERATOR_TYPE = "NVIDIA_TESLA_K80"
-    _TEST_ACCELERATOR_COUNT = 1
-    _TEST_BOOT_DISK_TYPE = "pd-standard"
-    _TEST_BOOT_DISK_SIZE_GB = 300
-    _TEST_REDUCTION_SERVER_REPLICA_COUNT = 1
-    _TEST_REDUCTION_SERVER_MACHINE_TYPE = "n1-highcpu-16"
-    _TEST_REDUCTION_SERVER_CONTAINER_URI = (
+  _TEST_REPLICA_COUNT = 1
+  _TEST_MACHINE_TYPE = "n1-standard-4"
+  _TEST_MACHINE_TYPE_TPU = "cloud-tpu"
+  _TEST_MACHINE_TYPE_TPU_V5E = "ct5lp-hightpu-4t"
+  _TEST_ACCELERATOR_TPU_TYPE = "TPU_V3"
+  _TEST_ACCELERATOR_TYPE = "NVIDIA_TESLA_K80"
+  _TEST_ACCELERATOR_COUNT = 1
+  _TEST_BOOT_DISK_TYPE = "pd-standard"
+  _TEST_BOOT_DISK_SIZE_GB = 300
+  _TEST_REDUCTION_SERVER_REPLICA_COUNT = 1
+  _TEST_REDUCTION_SERVER_MACHINE_TYPE = "n1-highcpu-16"
+  _TEST_REDUCTION_SERVER_CONTAINER_URI = (
         "us-docker.pkg.dev/vertex-ai-restricted/training/reductionserver:latest"
     )
-    _TEST_DATASET_DISPLAY_NAME = "test-dataset-display-name"
-    _TEST_DATASET_NAME = "test-dataset-name"
-    _TEST_DISPLAY_NAME = "test-display-name"
-    _TEST_BUCKET_NAME = "test-bucket"
-    _TEST_GCS_PATH_WITHOUT_BUCKET = "path/to/folder"
-    _TEST_GCS_PATH = f"{_TEST_BUCKET_NAME}/{_TEST_GCS_PATH_WITHOUT_BUCKET}"
-    _TEST_GCS_PATH_WITH_TRAILING_SLASH = f"{_TEST_GCS_PATH}/"
-    _TEST_MODEL_DISPLAY_NAME = "model-display-name"
-    _TEST_MODEL_LABELS = {"model_key": "model_value"}
-    _TEST_STAGING_BUCKET = "gs://test-staging-bucket"
-    _TEST_DISPLAY_NAME = "my_job_1234"
-    _TEST_BASE_OUTPUT_DIR = f"{_TEST_STAGING_BUCKET}/{_TEST_DISPLAY_NAME}"
-    _TEST_ENABLE_WEB_ACCESS = True
-    _TEST_WEB_ACCESS_URIS = {"workerpool0-0": "uri"}
-    _TEST_TRAINING_CONTAINER_IMAGE = "gcr.io/test-training/container:image"
+  _TEST_DATASET_DISPLAY_NAME = "test-dataset-display-name"
+  _TEST_DATASET_NAME = "test-dataset-name"
+  _TEST_DISPLAY_NAME = "test-display-name"
+  _TEST_BUCKET_NAME = "test-bucket"
+  _TEST_GCS_PATH_WITHOUT_BUCKET = "path/to/folder"
+  _TEST_GCS_PATH = f"{_TEST_BUCKET_NAME}/{_TEST_GCS_PATH_WITHOUT_BUCKET}"
+  _TEST_GCS_PATH_WITH_TRAILING_SLASH = f"{_TEST_GCS_PATH}/"
+  _TEST_MODEL_DISPLAY_NAME = "model-display-name"
+  _TEST_MODEL_LABELS = {"model_key": "model_value"}
+  _TEST_STAGING_BUCKET = "gs://test-staging-bucket"
+  _TEST_DISPLAY_NAME = "my_job_1234"
+  _TEST_BASE_OUTPUT_DIR = f"{_TEST_STAGING_BUCKET}/{_TEST_DISPLAY_NAME}"
+  _TEST_ENABLE_WEB_ACCESS = True
+  _TEST_WEB_ACCESS_URIS = {"workerpool0-0": "uri"}
+  _TEST_TRAINING_CONTAINER_IMAGE = "gcr.io/test-training/container:image"
 
-    _TEST_RUN_ARGS = ["-v", "0.1", "--test=arg"]
+  _TEST_RUN_ARGS = ["-v", "0.1", "--test=arg"]
 
-    _TEST_MACHINE_SPEC = {
+  _TEST_MACHINE_SPEC = {
         "machine_type": "n1-standard-4",
         "accelerator_type": "NVIDIA_TESLA_K80",
         "accelerator_count": 1,
     }
-    _TEST_WORKER_POOL_SPEC = [
+  _TEST_WORKER_POOL_SPEC = [
         {
             "machine_spec": _TEST_MACHINE_SPEC,
             "replica_count": 1,
@@ -123,7 +123,7 @@ class TrainingJobConstants:
             },
         }
     ]
-    _TEST_TPU_V5E_WORKER_POOL_SPEC = [
+  _TEST_TPU_V5E_WORKER_POOL_SPEC = [
         {
             "machine_spec": {
                 "machine_type": _TEST_MACHINE_TYPE_TPU_V5E,
@@ -136,7 +136,7 @@ class TrainingJobConstants:
             },
         }
     ]
-    _TEST_TPU_V3_WORKER_POOL_SPEC = [
+  _TEST_TPU_V3_WORKER_POOL_SPEC = [
         {
             "machine_spec": {
                 "machine_type": _TEST_MACHINE_TYPE_TPU,
@@ -150,17 +150,34 @@ class TrainingJobConstants:
             },
         }
     ]
-    _TEST_ID = "1028944691210842416"
-    _TEST_NETWORK = (
-        f"projects/{ProjectConstants._TEST_PROJECT}/global/networks/{_TEST_ID}"
-    )
-    _TEST_RESERVED_IP_RANGES = ["example_ip_range"]
-    _TEST_TIMEOUT = 8000
-    _TEST_TIMEOUT_SECONDS = duration_pb2.Duration(seconds=_TEST_TIMEOUT)
-    _TEST_RESTART_JOB_ON_WORKER_RESTART = True
-    _TEST_DISABLE_RETRIES = True
+  _TEST_RESERVATION_AFFINITY_WORKER_POOL_SPEC = [{
+      "machine_spec": {
+          "machine_type": "n1-standard-4",
+          "accelerator_type": "NVIDIA_TESLA_K80",
+          "accelerator_count": 1,
+          "reservation_affinity": {
+              "reservation_affinity_type": "ANY_RESERVATION"
+          },
+      },
+      "replica_count": 1,
+      "disk_spec": {"boot_disk_type": "pd-ssd", "boot_disk_size_gb": 100},
+      "container_spec": {
+          "image_uri": _TEST_TRAINING_CONTAINER_IMAGE,
+          "command": [],
+          "args": _TEST_RUN_ARGS,
+      },
+  }]
+  _TEST_ID = "1028944691210842416"
+  _TEST_NETWORK = (
+      f"projects/{ProjectConstants._TEST_PROJECT}/global/networks/{_TEST_ID}"
+  )
+  _TEST_RESERVED_IP_RANGES = ["example_ip_range"]
+  _TEST_TIMEOUT = 8000
+  _TEST_TIMEOUT_SECONDS = duration_pb2.Duration(seconds=_TEST_TIMEOUT)
+  _TEST_RESTART_JOB_ON_WORKER_RESTART = True
+  _TEST_DISABLE_RETRIES = True
 
-    _TEST_BASE_CUSTOM_JOB_PROTO = custom_job.CustomJob(
+  _TEST_BASE_CUSTOM_JOB_PROTO = custom_job.CustomJob(
         display_name=_TEST_DISPLAY_NAME,
         job_spec=custom_job.CustomJobSpec(
             worker_pool_specs=_TEST_WORKER_POOL_SPEC,
@@ -178,34 +195,34 @@ class TrainingJobConstants:
         labels=ProjectConstants._TEST_LABELS,
         encryption_spec=ProjectConstants._TEST_ENCRYPTION_SPEC,
     )
-    _TEST_PIPELINE_RESOURCE_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/us-central1/trainingPipelines/{_TEST_ID}"
-    _TEST_BUCKET_NAME = "test-bucket"
-    _TEST_TENSORBOARD_RESOURCE_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/{ProjectConstants._TEST_LOCATION}/tensorboards/{_TEST_ID}"
-    _TEST_MODEL_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/us-central1/models/{_TEST_ID}"
-    _TEST_CUSTOM_JOB_RESOURCE_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/{ProjectConstants._TEST_LOCATION}/customJobs/{_TEST_ID}"
-    _TEST_CREDENTIALS = mock.Mock(spec=auth_credentials.AnonymousCredentials())
-    _TEST_SERVING_CONTAINER_PREDICTION_ROUTE = "predict"
-    _TEST_SERVING_CONTAINER_HEALTH_ROUTE = "metadata"
-    _TEST_MODEL_DISPLAY_NAME = "model-display-name"
-    _TEST_TRAINING_FRACTION_SPLIT = 0.6
-    _TEST_VALIDATION_FRACTION_SPLIT = 0.2
-    _TEST_TEST_FRACTION_SPLIT = 0.2
-    _TEST_BOOT_DISK_TYPE_DEFAULT = "pd-ssd"
-    _TEST_BOOT_DISK_SIZE_GB_DEFAULT = 100
-    # # DUPLICATE: THIS NEEDS TO BE MOVED TO THE TRAINING JOB TEST THAT USES IT
-    _TEST_PIPELINE_RESOURCE_NAME = (
+  _TEST_PIPELINE_RESOURCE_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/us-central1/trainingPipelines/{_TEST_ID}"
+  _TEST_BUCKET_NAME = "test-bucket"
+  _TEST_TENSORBOARD_RESOURCE_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/{ProjectConstants._TEST_LOCATION}/tensorboards/{_TEST_ID}"
+  _TEST_MODEL_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/us-central1/models/{_TEST_ID}"
+  _TEST_CUSTOM_JOB_RESOURCE_NAME = f"projects/{ProjectConstants._TEST_PROJECT}/locations/{ProjectConstants._TEST_LOCATION}/customJobs/{_TEST_ID}"
+  _TEST_CREDENTIALS = mock.Mock(spec=auth_credentials.AnonymousCredentials())
+  _TEST_SERVING_CONTAINER_PREDICTION_ROUTE = "predict"
+  _TEST_SERVING_CONTAINER_HEALTH_ROUTE = "metadata"
+  _TEST_MODEL_DISPLAY_NAME = "model-display-name"
+  _TEST_TRAINING_FRACTION_SPLIT = 0.6
+  _TEST_VALIDATION_FRACTION_SPLIT = 0.2
+  _TEST_TEST_FRACTION_SPLIT = 0.2
+  _TEST_BOOT_DISK_TYPE_DEFAULT = "pd-ssd"
+  _TEST_BOOT_DISK_SIZE_GB_DEFAULT = 100
+  # # DUPLICATE: THIS NEEDS TO BE MOVED TO THE TRAINING JOB TEST THAT USES IT
+  _TEST_PIPELINE_RESOURCE_NAME = (
         "projects/my-project/locations/us-central1/trainingPipelines/12345"
     )
-    _TEST_DEFAULT_ENCRYPTION_KEY_NAME = "key_default"
-    _TEST_SPOT_STRATEGY = custom_job.Scheduling.Strategy.SPOT
+  _TEST_DEFAULT_ENCRYPTION_KEY_NAME = "key_default"
+  _TEST_SPOT_STRATEGY = custom_job.Scheduling.Strategy.SPOT
 
-    def create_tpu_job_proto(tpu_version):
-        worker_pool_spec = (
+  def create_tpu_job_proto(tpu_version):
+    worker_pool_spec = (
             TrainingJobConstants._TEST_TPU_V5E_WORKER_POOL_SPEC
             if tpu_version == "v5e"
             else TrainingJobConstants._TEST_TPU_V3_WORKER_POOL_SPEC
         )
-        return custom_job.CustomJob(
+    return custom_job.CustomJob(
             display_name=TrainingJobConstants._TEST_DISPLAY_NAME,
             job_spec=custom_job.CustomJobSpec(
                 worker_pool_specs=worker_pool_spec,
