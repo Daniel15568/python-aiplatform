@@ -1400,6 +1400,7 @@ class GenerationConfig:
         top_p: Optional[float] = None,
         top_k: Optional[int] = None,
         candidate_count: Optional[int] = None,
+        seed: Optional[int] = None,
         max_output_tokens: Optional[int] = None,
         stop_sequences: Optional[List[str]] = None,
         presence_penalty: Optional[float] = None,
@@ -1414,6 +1415,7 @@ class GenerationConfig:
             top_p: If specified, nucleus sampling will be used. Range: (0.0, 1.0]
             top_k: If specified, top-k sampling will be used.
             candidate_count: Number of candidates to generate.
+            seed: Random seed for the generation.
             max_output_tokens: The maximum number of output tokens to generate per message.
             stop_sequences: A list of stop sequences.
             presence_penalty: Positive values penalize tokens that have appeared in the generated text,
@@ -1440,6 +1442,7 @@ class GenerationConfig:
                     top_p=0.95,
                     top_k=20,
                     candidate_count=1,
+                    seed=5,
                     max_output_tokens=100,
                     stop_sequences=["\n\n\n"],
                 )
@@ -1456,6 +1459,7 @@ class GenerationConfig:
             top_p=top_p,
             top_k=top_k,
             candidate_count=candidate_count,
+            seed=seed,
             max_output_tokens=max_output_tokens,
             stop_sequences=stop_sequences,
             presence_penalty=presence_penalty,
